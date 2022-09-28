@@ -1,0 +1,28 @@
+#lang sicp
+
+; exercise 1.2
+(/(+
+    5
+    4
+    (- 2
+       (- 3
+        (+ 6
+           (/ 4 5)))))
+  (* 3
+      (- 6 2)
+      (- 2 7)))
+
+; exercise 1.3 define a procedure that takes three numbers as arguments and returns the sum of the squres of the two larger numbers
+(define (larger x y z)
+  (cond ((and (< x y) (< x z)) (+ (* y y) (* z z)))
+        ((and (< y x) (< y z)) (+ (* x x) (* z z)))
+        ((and (< z y) (< z x)) (+ (* y y) (* x x)))))
+     
+(larger 3 4 5)
+
+; exercise 1.4 describe the behavior of the following procedure
+(define (a-times-abs-b a b)
+  ((if (> b 0) * /) a b ))
+(a-times-abs-b 5 5)
+; notice how the if expression is the operator here. ie, whatever the exression evaluates to, will be the operator for the combination
+
