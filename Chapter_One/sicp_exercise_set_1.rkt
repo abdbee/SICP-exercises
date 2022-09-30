@@ -27,10 +27,10 @@
 ; notice how the if expression is the operator here. ie, whatever the exression evaluates to, will be the operator for the combination
 
 ; exercise 1.5 observations with an interpreter that uses normal-order evaluation vs with applicative order evaluation
-(define (p) (p))
-(define (test x y)
-  (if (= x 0) 0 y))
-(test 0 (p))
+;(define (p) (p))
+;(define (test x y)
+;  (if (= x 0) 0 y))
+;(test 0 (p))
 
 ; for normal-order evaluation, the expression is fully expanded, and then the operator is applied in all operands before reduction. in this case, the if statement is applied
 ; to 0 and p, of which the predicate evaluates to true. hence, 0 is returned. 
@@ -39,7 +39,37 @@
 ; (p) and will never have a definite value. hence, with applicative - order evaluation, the program runs infinitely
 
 ; Notice that normal-order evaluation for this procedure will work if a normal-order evaluation interpreter is used, because the predicate evaluated to true. But if you change the number to anything other than 0 (1 for example), the predicate evaluates to false. hence,
-; the consequent expression ((p)) in this case has to be reduced. But (p) always evaluates to (p) and no finite value is gotten. hence, the program will run forever and never return anything
+; the consequent expression ((p)) in this case has to be reduced. But (p) always calls itself recursively and no finite value is gotten. hence, the program will run forever and never return anything
+
+
+
+
+
+; Exercise 1.8 - Newton's method for cube root
+
+(define (improve guess x)
+   (/ (+ (/ x
+       (* guess guess)) (* 2 guess))
+      3)
+  )
+
+(define (cube guess x)
+  (if (<(abs(- guess (improve guess x))) (* guess (/ 1 10000)))
+      guess
+      (cube (improve guess x) x)
+        
+  ))
+
+(cube 1 100)
+
+
+
+
+
+
+
+
+
 
 
 
