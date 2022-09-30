@@ -27,7 +27,7 @@
 ; notice how the if expression is the operator here. ie, whatever the exression evaluates to, will be the operator for the combination
 
 ; exercise 1.5 observations with an interpreter that uses normal-order evaluation vs with applicative order evaluation
-(define (p) (1))
+(define (p) (p))
 (define (test x y)
   (if (= x 0) 0 y))
 (test 0 (p))

@@ -1,0 +1,10 @@
+#lang sicp
+
+(define (quotient guess x) (/ x guess))
+(define (newguess oldguess x) (/ (+ (quotient oldguess x) oldguess) x))
+
+
+(define (error newguess x) (abs (- (* newguess newguess ) x)))
+
+(define (sqrt guess x)
+  (if (< (error(newguess guess x) x) 0.001) (newguess guess x) (sqrt (newguess guess x) x)))
