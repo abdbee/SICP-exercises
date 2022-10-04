@@ -26,6 +26,7 @@
 
 ; third implementation. essentially, recursion keeps on substituting for the innermost parenthesis, until the stoping point is reached (ie, when the predicate is true),
 ;of which the predicate is returned and recursion stops
+; this method uses a linear recursive process, since the length of the chain of deffered multiplications grow linearly with n.
 (define (another-factorial n)
   (if (= n 1)
       1 ; not that this is returned to the innermost parenthesis in the recursion
@@ -35,7 +36,9 @@
 (another-factorial 4)
 
 
-; fourth implementation
+; fourth implementation. In this case, all we need to keep track of are the value of the formal parameters. This is a recursive procedure that generates an iterative process, because the state can be summarized by a fixed number
+; of state variables, together with a fixed rule that describes how the state variables should be updated as the process moves from state to state as well as an optional end test that specifies
+; conditions under which the process should terminate. The state is the only thing the interpreter needs to keep track of in order to execute the process. This is a linear iterative process, because the number of steps required grow linearly with n.
 
 (define (multiplier2 x y) (* x y))
 
