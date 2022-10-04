@@ -20,8 +20,7 @@
 (inc 8)
 9
 
-; this shows that the recursive procedure above uses a recursive process because there're some information hidden
-; by the interpreter that are not captured in the variable, but are needed to get the desired result.
-; In this case, the state of b doesn't really change. The interpreter has to keep track of the entire chain
-; of the procedure, in order to reduce and evaluate the result once a = 0 and b is pased into the innermost
-; function call of the chain.
+
+
+
+
