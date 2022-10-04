@@ -1,7 +1,8 @@
 #lang sicp
+;Exercise 1.9  (a)
 
 ; the most important thing to know about recursion is that you're always substituting the function/parameter with either the predicate or the consequent
-;Exercise 1.9
+
 (define (+ a b)
  (if (= a 0) b (inc (+ (dec a) b)))
   )
@@ -25,3 +26,13 @@
 ; In this case, the state of b doesn't really change. The interpreter has to keep track of the entire chain
 ; of the procedure, in order to reduce and evaluate the result once a = 0 and b is pased into the innermost
 ; function call of the chain.
+
+;Exercise 1.9  (b)
+(define (++ c d)
+  (if (= c 0) d (+ (dec c) (inc d))))
+
+(+ 4 5)
+
+; Notice that in this case, the second variable that will be returned if the predicate is true, changes its state during each round of the recursive procedure.
+; hence, all the interpreter needs to run the program, are the most recent states of the variables (c and d) after each round of recursive procedure. the final state of d is returned
+; once the predicate is true.
