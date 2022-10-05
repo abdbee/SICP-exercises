@@ -36,3 +36,13 @@
 ; Notice that in this case, the second variable that will be returned if the predicate is true, changes its state during each round of the recursive procedure.
 ; hence, all the interpreter needs to run the program, are the most recent states of the variables (c and d) after each round of recursive procedure. the final state of d is returned
 ; once the predicate is true.
+
+
+; Exercise 1.10
+( define (A x y)
+   (cond ((= y 0) 0)
+     ((= x 0) (* 2 y))
+     ((= y 1) 2)
+     (else (A(- x 1) (A x (- y 1))))
+    )
+ )
