@@ -46,3 +46,24 @@
      (else (A(- x 1) (A x (- y 1))))
     )
  )
+
+
+; Exercise 1.11
+
+; a. computation with a recursive process
+(define (funf n)
+  (if (< n 3)
+      n
+      (+ (funf (- n 1)) (+ (* 2 (funf (- n 2))) (* 3 (funf(- n 3)))))))
+
+; b. computation with a iterative process
+(define (f n) 
+   (define (iter a b c count) 
+     (if (= count 0) 
+       a 
+       (iter b c (+ c (+ (* 2 b) (* 3 a))) (- count 1)))) 
+   (iter 0 1 2 n))
+
+(funf 5)
+
+(f 5)
